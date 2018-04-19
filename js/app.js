@@ -40,7 +40,15 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction){
-    alert(direction);
+    //alert(direction);
+    if(direction === 'right' && this.x < 410)
+        this.x = this.x + 10;
+    else if(direction === 'left' && this.x > 0)
+        this.x = this.x - 10;
+    else if(direction === 'up' && this.y > -10)
+        this.y = this.y - 10;
+    else if(direction === 'down' && this.y < 410)
+        this.y = this.y + 10;
 };
 
 // Now instantiate your objects.
