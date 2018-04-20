@@ -1,8 +1,9 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(positionX, positionY) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+        this.x = positionX;
+        this.y = positionY;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -41,26 +42,26 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(direction){
     //alert(direction);
-    if(direction === 'right' && this.x < 410)
-        this.x = this.x + 10;
+    if(direction === 'right' && this.x < 400)
+        this.x = this.x + 100;
     else if(direction === 'left' && this.x > 0)
-        this.x = this.x - 10;
-    else if(direction === 'up' && this.y > -10)
-        this.y = this.y - 10;
-    else if(direction === 'down' && this.y < 410)
-        this.y = this.y + 10;
+        this.x = this.x - 100;
+    else if(direction === 'up' && this.y > 0)
+        this.y = this.y - 82.5;
+    else if(direction === 'down' && this.y < 400)
+        this.y = this.y + 82.5;
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
-var enemy4 = new Enemy();
-var enemy5 = new Enemy();
-var enemy6 = new Enemy();
+var enemy1 = new Enemy(10,60);
+var enemy2 = new Enemy(150,60);
+var enemy3 = new Enemy(60,145);
+var enemy4 = new Enemy(300,145);
+var enemy5 = new Enemy(200,230);
+var enemy6 = new Enemy(400,230);
 
 var allEnemies = [
     enemy1,
@@ -71,7 +72,7 @@ var allEnemies = [
     enemy6
 ];
 
-var player1 = new Player(200,300);
+var player1 = new Player(200,400);
 var player = player1;
 
 // This listens for key presses and sends the keys to your
