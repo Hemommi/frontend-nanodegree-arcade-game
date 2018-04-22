@@ -5,7 +5,8 @@ var Enemy = function(positionX, positionY,speed) {
         this.x = positionX;
         this.y = positionY;
         this.speed = speed;
- 
+        this.pointX = positionX;
+        this.pointY = positionY;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -19,6 +20,17 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     
     this.x = this.x +(this.speed*dt);
+
+    //Move all Enemies
+    if(this.x >= 505){
+        this.move();
+    }
+};
+
+// Move all Enemies
+Enemy.prototype.move = function(pointX, pointY){
+    this.x = this.pointX;
+    this.y = this.pointY;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -61,11 +73,11 @@ Player.prototype.handleInput = function(direction){
 // Place the player object in a variable called player
 
 var enemy1 = new Enemy(0,60,80);
-var enemy2 = new Enemy(150,60,80);
-var enemy3 = new Enemy(60,145,60);
-var enemy4 = new Enemy(300,145,60);
-var enemy5 = new Enemy(200,230,100);
-var enemy6 = new Enemy(400,230,100);
+var enemy2 = new Enemy(-150,60,80);
+var enemy3 = new Enemy(-60,145,60);
+var enemy4 = new Enemy(-300,145,60);
+var enemy5 = new Enemy(-200,230,100);
+var enemy6 = new Enemy(-400,230,100);
 
 var allEnemies = [
     enemy1,
