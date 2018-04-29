@@ -22,9 +22,18 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x +(this.speed*dt);
 
     //Move all Enemies
-    if(this.x >= 505){
+    if (this.x >= 505){
         this.move();
     }
+
+    // Collision detected
+    if (player.x > this.x - 75 &&
+        player.y > this.y - 25 &&
+        player.x < this.x + 75 &&
+        player.y < this.y + 25){
+                player.x = 200;
+                player.y = 400;
+      }
 };
 
 // Move all Enemies
@@ -49,7 +58,6 @@ var Player = function(x,y) {
 };
 
 Player.prototype.update = function(){
-
 };
 
 Player.prototype.render = function() {
@@ -57,14 +65,14 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction){
-    //alert(direction);
-    if(direction === 'right' && this.x < 400)
+
+    if (direction === 'right' && this.x < 400)
         this.x = this.x + 100;
-    else if(direction === 'left' && this.x > 0)
+    else if (direction === 'left' && this.x > 0)
         this.x = this.x - 100;
-    else if(direction === 'up' && this.y > 0)
+    else if (direction === 'up' && this.y > 0)
         this.y = this.y - 82.5;
-    else if(direction === 'down' && this.y < 400)
+    else if (direction === 'down' && this.y < 400)
         this.y = this.y + 82.5;
 };
 
@@ -72,12 +80,12 @@ Player.prototype.handleInput = function(direction){
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(0,60,80);
-var enemy2 = new Enemy(-150,60,80);
+var enemy1 = new Enemy(0,60,200);
+var enemy2 = new Enemy(-150,60,200);
 var enemy3 = new Enemy(-60,145,60);
 var enemy4 = new Enemy(-300,145,60);
-var enemy5 = new Enemy(-200,230,100);
-var enemy6 = new Enemy(-400,230,100);
+var enemy5 = new Enemy(-200,230,300);
+var enemy6 = new Enemy(-400,230,300);
 
 var allEnemies = [
     enemy1,
@@ -88,8 +96,7 @@ var allEnemies = [
     enemy6
 ];
 
-var player1 = new Player(200,400);
-var player = player1;
+var player =  new Player(200,400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
