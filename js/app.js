@@ -25,14 +25,23 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505){
         this.move();
     }
-
+    
+    var isGameRestarted = false;
+    
     // Collision detected
     if (player.x > this.x - 75 &&
         player.y > this.y - 25 &&
         player.x < this.x + 75 &&
         player.y < this.y + 25){
-                player.x = 200;
-                player.y = 400;
+                //player.x = 200;
+                //player.y = 400;
+                player.sprite = 'images/char-horn-girl-dead.png';
+        };
+    
+    //Restart game.
+    function restartGame(){
+	isGameRestarted = true;
+	swal("Try again!");
       }
 };
 
