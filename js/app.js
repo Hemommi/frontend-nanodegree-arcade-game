@@ -31,10 +31,11 @@ Enemy.prototype.update = function(dt) {
         player.y > this.y - 25 &&
         player.x < this.x + 75 &&
         player.y < this.y + 25){
-                //player.x = 200;
-                //player.y = 400;
                 player.sprite = 'images/char-horn-girl-dead.png';
                 restartGame();
+                player.x = 200;
+                player.y = 400;
+                //player.sprite = 'images/char-horn-girl.png';
         }
 };
 
