@@ -12,6 +12,9 @@ var Enemy = function(positionX, positionY,speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
+//Audio.
+ var audio = new Audio('media/crashing.wav');
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
@@ -25,25 +28,33 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505){
         this.move();
     }
-    
+   
     // Collision detected
-    if (player.x > this.x - 75 &&
-        player.y > this.y - 25 &&
-        player.x < this.x + 75 &&
-        player.y < this.y + 25){
+    if(player.x > this.x - 75 && 
+       player.x < this.x + 75 &&
+       player.y > this.y - 25 && 
+       player.y < this.y + 25){
+            audio.play();
+            if(player.isAlive === true){
+                player.isAlive = false;
                 player.sprite = 'images/char-horn-girl-dead.png';
-                restartGame();
-                player.x = 200;
-                player.y = 400;
-                //player.sprite = 'images/char-horn-girl.png';
-        }
+                setTimeout(function(){                                                            
+                    restartGame();       
+                },2000); 
+            };
+        };  
 };
 
 //Restart game/alert.
 function restartGame(){
-	isGameRestarted = true;
-    swal("Try again!");
-}
+    swal("Try again!")
+    .then((value) => {
+        player.x = 200;
+        player.y = 400; 
+        player.sprite = 'images/char-horn-girl.png';
+        player.isAlive = true;
+      });
+};
 
 // Move all Enemies
 Enemy.prototype.move = function(pointX, pointY){
@@ -64,9 +75,28 @@ var Player = function(x,y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-horn-girl.png';
+    this.isAlive = true;
+};
+
+Player.prototype.reset = function(){
+    this.x = 200;
+    this.y = 400;
 };
 
 Player.prototype.update = function(){
+    if(this.y < 0){ 
+        setTimeout(function(){
+            finishGame();
+        },1000)
+        setTimeout(function(){
+            player.x = 200;
+            player.y = 400; 
+        },1000)
+        };
+};
+
+function finishGame(){
+    swal("You win!")
 };
 
 Player.prototype.render = function() {
@@ -74,15 +104,16 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction){
-
-    if (direction === 'right' && this.x < 400)
-        this.x = this.x + 100;
-    else if (direction === 'left' && this.x > 0)
-        this.x = this.x - 100;
-    else if (direction === 'up' && this.y > 0)
-        this.y = this.y - 82.5;
-    else if (direction === 'down' && this.y < 400)
-        this.y = this.y + 82.5;
+    if(player.isAlive === true){
+        if (direction === 'right' && this.x < 400)
+            this.x = this.x + 100;
+        else if (direction === 'left' && this.x > 0)
+            this.x = this.x - 100;
+        else if (direction === 'up' && this.y > 0)
+            this.y = this.y - 82.5;
+        else if (direction === 'down' && this.y < 400)
+            this.y = this.y + 82.5;
+    };
 };
 
 // Now instantiate your objects.
