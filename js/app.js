@@ -1,14 +1,14 @@
-// Enemies our player must avoid
+// Enemies our player must avoid.
 var Enemy = function(positionX, positionY,speed) {
     // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // we've provided one for you to get started.
         this.x = positionX;
         this.y = positionY;
         this.speed = speed;
         this.pointX = positionX;
         this.pointY = positionY;
     // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // a helper we've provided to easily load images.
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -24,12 +24,12 @@ Enemy.prototype.update = function(dt) {
     
     this.x = this.x +(this.speed*dt);
 
-    //Move all Enemies
+    //Move all Enemies.
     if (this.x >= 505){
         this.move();
     }
    
-    // Collision detected
+    // Collision detected.
     if(player.x > this.x - 75 && 
        player.x < this.x + 75 &&
        player.y > this.y - 25 && 
@@ -56,13 +56,13 @@ function restartGame(){
       });
 };
 
-// Move all Enemies
+// Move all Enemies.
 Enemy.prototype.move = function(pointX, pointY){
     this.x = this.pointX;
     this.y = this.pointY;
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen, required method for game.
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -87,16 +87,16 @@ Player.prototype.update = function(){
     if(this.y < 0){ 
         setTimeout(function(){
             finishGame();
-        },1000)
+        },1000);
         setTimeout(function(){
             player.x = 200;
             player.y = 400; 
-        },1000)
-        };
+        },1000);
+    };
 };
 
 function finishGame(){
-    swal("You win!")
+    swal("You win!");
 };
 
 Player.prototype.render = function() {
