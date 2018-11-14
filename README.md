@@ -15,3 +15,7 @@ Classic Arcade Game Frogger was created using JavaScript Object-Oriented style. 
 4.	Sweet Alert
 
 ## Screenshot
+
+![Img](images/main.png)
+![Img](images/win.png)
+![Img](images/tryagain.png)
