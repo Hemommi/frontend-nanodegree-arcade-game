@@ -1,12 +1,17 @@
-Front-End Web Developer Nanodegree Program
+# Classic Arcade Game
 
-## Classic Arcade Game Clone
-_Project 3_
+Classic Arcade Game Frogger was created using JavaScript Object-Oriented style. Game uses a lot of objects to keep track of the environment and user enemy-interaction. Turn on your speakers.
 
-This Game was created using JavaScript Object-Oriented style and HTML5.
+## Instructions:
+1.	Download all files.
+2.	Open index.html in your browser.
+3.	Use the arrow keys to move Player.
+4.	The Player needs to reach the top of the water and avoid Enemies.
 
-**How to play:**
-1)	Download all files.
-2)	Open index.html in your browser.
-3)	Use the arrow keys to move Player.
-4)	The Player needs to reach the top of the water and avoid Enemies.
+## Technologies and Packages:
+1.	HTML5 Canvas
+2.	CSS3
+3.	JavaScript(object-oriented)
+4.	Sweet Alert
+
+## Screenshot
